@@ -1,8 +1,14 @@
+'use client';
+
 import React from 'react';
+import { useSafeSearchParams } from '@/validations/routeSchema';
 import { SearchIcon, SpinnerIcon } from './ui/icons';
 
 export default function Search() {
   const searching = false;
+  // const searchParams = useSearchParams();
+  // const q = searchParams.get('q') || '';
+  const { q } = useSafeSearchParams('home');
 
   return (
     <form role="search">
@@ -10,6 +16,7 @@ export default function Search() {
         className="w-full pl-8 outline-offset-1"
         aria-label="Search contacts"
         name="q"
+        defaultValue={q}
         placeholder="Search"
         type="search"
       />
