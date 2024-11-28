@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
+
 import LinkButton from '@/components/ui/LinkButton';
-import { deleteContact } from '@/data/actions/deleteContact';
+
 import { getContact } from '@/data/services/getContact';
 import GithubLogo from '@/public/github-mark.svg';
+import DeleteContactButton from './_components/DeleteContactButton';
 import Favorite from './_components/Favorite';
 
 type PageProps = {
@@ -68,11 +69,7 @@ export default async function ContactPage({ params }: PageProps) {
           <LinkButton theme="secondary" href={`/contacts/${contactId}/edit`}>
             Edit
           </LinkButton>
-          <form action={deleteContact.bind(null, contactId)}>
-            <Button type="submit" theme="destroy">
-              Delete
-            </Button>
-          </form>
+          <DeleteContactButton contactId={contactId} />
         </div>
       </div>
     </div>
