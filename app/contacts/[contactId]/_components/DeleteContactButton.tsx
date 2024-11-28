@@ -6,7 +6,7 @@ import SubmitButton from '@/components/ui/SubmitButton';
 import { deleteContact } from '@/data/actions/deleteContact';
 
 export default function DeleteContactButton({ contactId }: { contactId: string }) {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   return (
     <form
@@ -20,7 +20,7 @@ export default function DeleteContactButton({ contactId }: { contactId: string }
       }}
       action={deleteContact.bind(null, contactId)}
     >
-      <SubmitButton loading={isPending} type="submit" theme="destroy">
+      <SubmitButton type="submit" theme="destroy">
         Delete
       </SubmitButton>
     </form>
