@@ -61,7 +61,7 @@ export default function ContactForm({ contact }: { contact: Contact }) {
         <TextArea className="grow" defaultValue={contact.notes || undefined} name="notes" rows={6} />
       </div>
       <div className="flex gap-2 self-start @sm:self-end">
-        <LinkButton theme="secondary" href={`/contacts/${contactId}`}>
+        <LinkButton theme="secondary" href={`/contacts/${contact.id}`}>
           Cancel
         </LinkButton>
         <SubmitButton theme="primary" type="submit">
