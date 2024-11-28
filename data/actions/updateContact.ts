@@ -3,12 +3,13 @@
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
-import type { ContactSchemaErrorType } from '@/validations/contactSchema';
+import type { ContactSchemaErrorType, ContactSchemaType } from '@/validations/contactSchema';
 import { contactSchema } from '@/validations/contactSchema';
 import { routes } from '@/validations/routeSchema';
 
 type State = {
   errors?: ContactSchemaErrorType;
+  data?: ContactSchemaType;
 };
 
 export async function updateContact(contactId: string, _prevState: State, formData: FormData) {
@@ -19,6 +20,7 @@ export async function updateContact(contactId: string, _prevState: State, formDa
 
   if (!result.success) {
     return {
+      data: data as ContactSchemaType,
       errors: result.error.formErrors,
     };
   }
